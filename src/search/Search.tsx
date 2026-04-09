@@ -113,10 +113,14 @@ export default function Search() {
 
   return (
     <div className='search-page-container'>
+        <div className='top-effect'/>
       <h1>Marine Scanner</h1>
 
       
       <div className="search-area">
+        <div className='search-wrapper'>
+
+        
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -128,8 +132,9 @@ export default function Search() {
         className='search-btn'
         onClick={searchSpecies}>
             
-            <LuSearch />
+            <LuSearch size={20}/>
             </button>
+      </div>
       </div>
 
       
@@ -153,15 +158,10 @@ export default function Search() {
       >
         {results.map((item) => (
           <div
+            className='info-card'
             key={item.AphiaID}
             onClick={() => setSelected(item)}
-            style={{
-              border: "1px solid gray",
-              padding: "1rem",
-              cursor: "pointer",
-              transition: "0.3s",
-              background: "#111",
-            }}
+            
           >
             {item.image ? (
               <img

@@ -1,15 +1,23 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-  
+   background-image: url('/public/Images/ocean-bg.jpg');
+}
+
+.top-effect {
+    position: fixed;
+    width: 100vw;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 9, 29));
+    height: 30%;
+    z-index: 0;
+}
+
+h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 5em;
+    letter-spacing: 1px;
 }
     
-
-
 .search-area {
-    background: red;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -18,15 +26,38 @@ body {
     margin-bottom: 1em;
 }
 
-.search-bar {
+.search-wrapper {
+    position: relative;
     width: 40vw;
-    padding: 1em;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 1em 0;
+    padding-left: 1em;
     border: 1px solid aqua;
     font-size: 1em;
     background: rgb(0, 2, 11);
-    
 }
 
-.search-btn {
 
+.search-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    padding: 1em;
+    margin-right: 0.5em;
+}
+
+.info-card {
+    
+            border: 1px solid white;
+            padding: 1em;
+            cursor: crosshair;
+            transition: 0.3s;
+            background: rgba(0, 0, 0, 0.518);
+            backdrop-filter: blur(5px);
+            
 }
