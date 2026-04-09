@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  
+}
+    
+
+
+.search-area {
+    background: red;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.search-bar {
+    width: 40vw;
+    padding: 1em;
+    border: 1px solid aqua;
+    font-size: 1em;
+    background: rgb(0, 2, 11);
+    
+}
+
+.search-btn {
+
+}

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import './Search.css';
+import { LuSearch } from "react-icons/lu";
+
 
 interface WormsRecord {
   AphiaID: number;
@@ -109,25 +112,24 @@ export default function Search() {
   };
 
   return (
-    <div style={{ padding: "2rem", color: "white" }}>
-      <h1>Marine Species Explorer 🌊</h1>
+    <div className='search-page-container'>
+      <h1>Marine Scanner</h1>
 
       
-      <div style={{ display: "flex", gap: "1rem" }}>
+      <div className="search-area">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && searchSpecies()}
-          placeholder="Try: shark, tuna, dolphin..."
-          style={{
-            padding: "0.5rem",
-            flex: 1,
-            background: "#111",
-            color: "white",
-            border: "1px solid gray",
-          }}
+          placeholder="Search Marine Species..."
+          className='search-bar'
         />
-        <button onClick={searchSpecies}>Search</button>
+        <button 
+        className='search-btn'
+        onClick={searchSpecies}>
+            
+            <LuSearch />
+            </button>
       </div>
 
       
@@ -135,7 +137,7 @@ export default function Search() {
 
       
       {!loading && results.length === 0 && (
-        <p style={{ marginTop: "1rem" }}>
+        <p className='results-text'>
           No results found. Try scientific names like "Delphinus".
         </p>
       )}
