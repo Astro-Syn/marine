@@ -117,6 +117,7 @@ export default function Search() {
         <div className='top-effect'/>
       <h1>Marine Scanner</h1>
 
+        <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p><span>///////</span></div>
       
       <div className="search-area">
         <div className='search-wrapper'>
