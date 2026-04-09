@@ -1,5 +1,6 @@
 body {
    background-image: url('/public/Images/ocean-bg.jpg');
+   cursor: crosshair;
 }
 
 .top-effect {
@@ -8,6 +9,16 @@ body {
     background: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 9, 29));
     height: 30%;
     z-index: 0;
+}
+
+
+.grid-bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/public/Images/grid-bg.png');
+    background-repeat: repeat;
+    opacity: 0.3;
 }
 
 h1 {
@@ -51,13 +62,23 @@ h1 {
     margin-right: 0.5em;
 }
 
-.info-card {
-    
-            border: 1px solid white;
-            padding: 1em;
-            cursor: crosshair;
-            transition: 0.3s;
-            background: rgba(0, 0, 0, 0.518);
-            backdrop-filter: blur(5px);
+.info-cards-container {
+        padding: 1em;
+          margin: 2em;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 2em;
+        
+}
+
+
+.info-card {    
+        border: 1px solid white;
+        padding: 1em;
+        cursor: crosshair;
+        max-width: 15vw;
+        transition: 0.3s;
+        background: rgba(0, 0, 0, 0.518);
+        backdrop-filter: blur(5px);
             
 }

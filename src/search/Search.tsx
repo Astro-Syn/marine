@@ -113,6 +113,7 @@ export default function Search() {
 
   return (
     <div className='search-page-container'>
+        <div className='grid-bg'/>
         <div className='top-effect'/>
       <h1>Marine Scanner</h1>
 
@@ -149,12 +150,7 @@ export default function Search() {
 
       
       <div
-        style={{
-          marginTop: "2rem",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: "1rem",
-        }}
+        className='info-cards-container'
       >
         {results.map((item) => (
           <div
