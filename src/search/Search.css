@@ -11,7 +11,6 @@ body {
     z-index: 0;
 }
 
-
 .grid-bg {
     position: fixed;
     width: 100vw;
@@ -24,8 +23,12 @@ body {
 h1 {
     position: relative;
     z-index: 2;
-    font-size: 5em;
-    letter-spacing: 1px;
+    font-size: 6em;
+    font-weight: bold;
+    color: black;
+    -webkit-text-stroke: 1px rgb(226, 250, 247);
+    letter-spacing: -5px;
+    
 }
     
 .search-area {
@@ -66,8 +69,9 @@ h1 {
         padding: 1em;
           margin: 2em;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 2em;
+          
         
 }
 
@@ -80,5 +84,6 @@ h1 {
         transition: 0.3s;
         background: rgba(0, 0, 0, 0.518);
         backdrop-filter: blur(5px);
+        clip-path: polygon(66% 0, 92% 0, 100% 8%, 100% 89%, 91% 100%, 7% 100%, 0 92%, 0 0);
             
 }
