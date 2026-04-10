@@ -113,9 +113,22 @@ export default function Search() {
 
   return (
     <div className='search-page-container'>
+       
+
+
+
         <div className='grid-bg'/>
         <div className='top-effect'/>
-      <h1>Marine Scanner</h1>
+
+        <div className="bubbles">
+  {Array.from({ length: 15 }).map((_, i) => (
+    <span key={i} />
+  ))}
+</div>
+        <div className='h1-title-wrapper'>
+             <h1>Marine Scanner</h1>
+        </div>
+      
 
         <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p><span>///////</span></div>
       
