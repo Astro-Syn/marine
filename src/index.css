@@ -2,7 +2,7 @@
   --text1: rgb(210, 241, 255);
   --background: #0a0e14;
   --foreground: #00f4ff;
-  font: 18px/145% var(--sans);
+  font: 18px/145% var(--sans); 
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -19,7 +19,6 @@
 
 
 body {
-    background: linear-gradient(rgb(0, 2, 11), rgb(0, 40, 97), rgb(0, 2, 11));
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Orbitron", monospace;
@@ -28,8 +27,7 @@ body {
 
  
 
-#root {
-  
+#root {  
   margin: 0 auto;
   text-align: center;
   min-height: 100svh;
@@ -39,35 +37,6 @@ body {
 }
 
 body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
   margin: 0;
 }
 

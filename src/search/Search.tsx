@@ -130,7 +130,7 @@ export default function Search() {
         </div>
       
 
-        <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p><span>///////</span></div>
+        <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p></div>
       
       <div className="search-area">
         <div className='search-wrapper'>
@@ -150,6 +150,31 @@ export default function Search() {
             <LuSearch size={20}/>
             </button>
       </div>
+      
+      </div>
+
+      <div>
+        <p>Suggestions</p>
+        <div className='btn-container'>
+          <div className='btn-wrapper'>
+              <button>Delphinus</button>
+          </div>
+
+          <div className='btn-wrapper'>
+              <button>Delphinus</button>
+          </div>
+
+          <div className='btn-wrapper'>
+              <button>Delphinus</button>
+          </div>
+
+          <div className='btn-wrapper'>
+              <button>Delphinus</button>
+          </div>
+            
+           
+        </div>
+        
       </div>
 
       

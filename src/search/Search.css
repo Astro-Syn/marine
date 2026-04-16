@@ -1,8 +1,45 @@
+:root {
+    --col1: rgb(255, 204, 0);
+    --col2: rgb(234, 152, 0);
+    --col3: #00e5ff;
+    --col4: #00c898;
+    --col5: #008b86;
+    --col6: #151a24;
+    --col7: #0b0e14;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: rgb(0, 2, 11); 
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 2, 11);
+    border-radius: 10px;
+    border: 2px solid var(--col2); 
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 2, 11); 
+}
+
+
 body {
-   background-image: url('/public/Images/ocean-water.png');
+   background-image: url('/public/Images/ocean-bg3.jpg');
+   background-size: cover;
    cursor: crosshair;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+   align-items: center;
 
    
 }
@@ -12,7 +49,7 @@ body {
     inset: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0), rgb(0, 9, 29));
     height: 60%;
-    z-index: 0;
+    z-index: -1;
 }
 
 .grid-bg {
@@ -20,7 +57,7 @@ body {
     inset: 0;
     background-image: url('/public/Images/grid-bg.png');
     background-repeat: repeat;
-    opacity: 0.3;
+    opacity: 0.5;
     z-index: -2;
 }
 
@@ -42,7 +79,7 @@ body {
     bottom: -50px;
     width: 10px;
     height: 10px;
-    background: rgba(165, 205, 218, 0.96);
+    background: var(--col2);
     border-radius: 50%;
     animation: rise 10s linear infinite;
 }
@@ -97,17 +134,14 @@ body {
 }
 
 
-.h1-title-wrapper {
-    
-}
-
 h1 {
     position: relative;
     z-index: 2;
+    line-height: 1;
     font-size: 7em;
     font-weight: 900;
     color: rgba(0, 0, 0, 0.856);
-    -webkit-text-stroke: 1px rgb(247, 254, 253);
+    -webkit-text-stroke: 1px var(--col1);
     letter-spacing: -5px;
     
 }
@@ -118,35 +152,49 @@ h1 {
     justify-content: center;
     gap: 4em;
     letter-spacing: 1px;
-    color: aqua;
+    color: white;
     z-index: 5;
-    font-size: 1.5em;
+    font-size: 1em;
+    margin-bottom: 2em;
+    font-family: 'Quantico';
     
 }
 
 .search-area {
     height: 10vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1em;
     margin-bottom: 1em;
+    background: var(--col2);
+     font-family: 'Quantico';
+    
 }
 
 .search-wrapper {
     position: relative;
-    width: 40vw;
+    width: 50vw;
+    
 }
 
 .search-bar {
     width: 100%;
     padding: 1em 0;
     padding-left: 1em;
-    border: 1px solid aqua;
+    border: 1px solid var(--col2);
     font-size: 1em;
+    clip-path: polygon(0% 0, 100% 0, 100% 0%, 100% 50%, 95% 100%, 7% 100%, 0 100%, 0 0);
     background: rgb(0, 2, 11);
+    outline: none;
 }
 
+.search-bar:focus {
+    background: rgba(21, 13, 0, 0.873);
+    border: 2px solid orange;
+    box-shadow: 0 0 10px orange;
+}
 
 .search-btn {
     position: absolute;
@@ -156,6 +204,9 @@ h1 {
     height: 80%;
     padding: 1em;
     margin-right: 0.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .info-cards-container {
@@ -165,12 +216,11 @@ h1 {
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 2em;
           
-        
 }
 
 
 .info-card {    
-        border: 1px solid white;
+        border: 1px solid var(--col2);
         padding: 1em;
         cursor: crosshair;
         max-width: 15vw;
@@ -179,5 +229,44 @@ h1 {
         backdrop-filter: blur(5px);
         clip-path: polygon(66% 0, 92% 0, 100% 8%, 100% 89%, 91% 100%, 7% 100%, 0 92%, 0 0);
         transition: 0.3s ease-in;          
+}
+
+.info-card:hover {
+    transform: scale(1.02);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container {
+    margin-top: 1em;
+}
+
+.btn-wrapper {
+    padding: 2px;
+    background-image: radial-gradient(rgba(0, 0, 255, 0), rgba(0, 0, 0, 0.033), aqua);
+    clip-path: polygon(0 0, 29% 0, 36% 10%, 100% 9%, 100% 100%, 0 100%, 0 22%);
+     backdrop-filter: blur(3px);
+}
+
+
+.btn-wrapper button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10em;
+    height: 4em;
+    font-family: 'Quantico';
+    background: rgba(0, 0, 39, 0.355);
+    backdrop-filter: blur(3px);
+    clip-path: polygon(0 0, 29% 0, 36% 10%, 100% 9%, 100% 100%, 0 100%, 0 22%);
+    border: none;
+    z-index: 1;
 }
 
