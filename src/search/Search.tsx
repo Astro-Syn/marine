@@ -125,6 +125,10 @@ export default function Search() {
     <span key={i} />
   ))}
 </div>
+
+      <div className='scanner-wrapper'>
+
+      
         <div className='h1-title-wrapper'>
              <h1>Marine Scanner</h1>
         </div>
@@ -211,15 +215,8 @@ export default function Search() {
               />
             ) : (
               <div
-                style={{
-                  height: "150px",
-                  background: "#222",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "0.5rem",
-                  fontSize: "0.8rem",
-                }}
+              className='info-card-img-area'
+              
               >
                 No Image
               </div>
@@ -249,13 +246,7 @@ export default function Search() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#111",
-              padding: "2rem",
-              maxWidth: "500px",
-              width: "90%",
-              border: "1px solid gray",
-            }}
+            className='selected-info-card'
           >
             {selected.image && (
               <img
@@ -264,13 +255,30 @@ export default function Search() {
               />
             )}
 
-            <h2>{selected.scientificname}</h2>
-            <p><strong>Authority:</strong> {selected.authority || "Unknown"}</p>
-            <p><strong>Rank:</strong> {selected.rank}</p>
-            <p><strong>Status:</strong> {selected.status}</p>
+          <div className='selected-name-wrapper'>
+
+           
+            <h2 className='selected-name'>
+              {selected.scientificname}
+              </h2>
+
+            <div className='status-wrapper'>
+              
+            <p><strong>Authority__</strong> {selected.authority || "Unknown"}</p>
+
+            <p><strong>Rank__</strong> {selected.rank}</p>
+
+            <p><strong>Status__</strong> {selected.status}</p>
+
+            </div>
+             <div className='selected-name-img-area'>
+
+              </div>
           </div>
         </div>
+        </div>
       )}
+    </div>
     </div>
   );
 }
