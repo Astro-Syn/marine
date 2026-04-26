@@ -258,9 +258,12 @@ export default function Search() {
           <div className='selected-name-wrapper'>
 
            
-            <h2 className='selected-name'>
-              {selected.scientificname}
-              </h2>
+            <h2 
+  className="selected-name"
+  data-text={selected.scientificname}
+>
+  {selected.scientificname}
+</h2>
 
             <div className='status-wrapper'>
               
