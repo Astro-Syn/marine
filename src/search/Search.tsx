@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Search.css';
 import { LuSearch } from "react-icons/lu";
-
+import { MdImageNotSupported } from "react-icons/md";
 
 interface WormsRecord {
   AphiaID: number;
@@ -115,8 +115,6 @@ export default function Search() {
     <div className='search-page-container'>
        
 
-
-
         <div className='grid-bg'/>
         <div className='top-effect'/>
 
@@ -218,7 +216,7 @@ export default function Search() {
               className='info-card-img-area'
               
               >
-                No Image
+                <MdImageNotSupported size={40}/>
               </div>
             )}
 
@@ -257,7 +255,7 @@ export default function Search() {
 
           <div className='selected-name-wrapper'>
 
-           
+          
             <h2 
   className="selected-name"
   data-text={selected.scientificname}
@@ -275,8 +273,25 @@ export default function Search() {
 
             </div>
              <div className='selected-name-img-area'>
-
-              </div>
+  {selected.image ? (
+    <img
+      src={selected.image}
+      alt={selected.scientificname}
+      onError={(e) => {
+        (e.target as HTMLImageElement).style.display = "none";
+      }}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
+  ) : (
+    <div className="fallback-icon">
+      <MdImageNotSupported size={50} />
+    </div>
+  )}
+</div>
           </div>
         </div>
         </div>
