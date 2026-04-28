@@ -1,5 +1,8 @@
 .app-wrapper {
     border: 2px solid orange;
+    padding: 3em;
+    min-height: 100vh;
+    width: 70vw;
 }
 
 :root {
@@ -42,6 +45,7 @@ body {
    justify-content: center;
    align-items: center;
    padding-top: 2em;
+   flex-wrap: wrap;
 
    
 }
