@@ -1,8 +1,20 @@
 .app-wrapper {
+    position: relative;
     border: 2px solid orange;
     padding: 3em;
     min-height: 100vh;
-    width: 70vw;
+    width: 60vw;
+    background: rgba(1, 0, 11, 0.733);
+    
+}
+
+.app-wrapper-fx {
+    position: absolute;
+    left: -1vw;
+    clip-path: polygon(20% 0%, 45% 0, 44% 48%, 44% 88%, 45% 100%, 20% 100%, 0 86%, 0% 20%);
+    height: 100vh;
+    width: 2vw;
+    background: orange;
 }
 
 :root {
