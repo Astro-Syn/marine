@@ -111,6 +111,10 @@ export default function Search() {
     setLoading(false);
   };
 
+  function suggestedBtnNavs(name: string){
+    setQuery(name)
+  }
+
   return (
     <div className='search-page-container'>
        
@@ -127,9 +131,7 @@ export default function Search() {
       <div className='scanner-wrapper'>
 
       
-        <div className='h1-title-wrapper'>
-             <h1>Marine Scanner</h1>
-        </div>
+    
       
 
         <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p></div>
@@ -159,19 +161,27 @@ export default function Search() {
         <p>Suggestions</p>
         <div className='btn-container'>
           <div className='btn-wrapper'>
-              <button>Delphinus</button>
+              <button onClick={() => suggestedBtnNavs("Delphinus")}>Dolphin</button>
           </div>
 
           <div className='btn-wrapper'>
-              <button>Delphinus</button>
+              <button
+              onClick={() => suggestedBtnNavs("Coralanthura")}
+              >Coral</button>
           </div>
 
           <div className='btn-wrapper'>
-              <button>Delphinus</button>
+              <button
+              onClick={() => {
+                suggestedBtnNavs("Megaptera novaeangliae")
+              }}
+              >Humpback Whale</button>
           </div>
 
           <div className='btn-wrapper'>
-              <button>Delphinus</button>
+              <button
+              onClick={() => suggestedBtnNavs("Gadus morhua")}
+              >Atlantic Cod</button>
           </div>
             
            
