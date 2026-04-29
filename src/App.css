@@ -1,3 +1,14 @@
+:root {
+    --col1: rgba(255, 192, 57, 0.909);
+    --col2: rgb(234, 117, 0);
+    --col3: #00e5ff;
+    --col4: #00c898;
+    --col5: #008b86;
+    --col6: #020725;
+    --col7: #030927;
+}
+
+
 .app-wrapper {
     position: fixed;
     top: 0;
@@ -20,6 +31,57 @@ clip-path: polygon(0 38%, 7% 34%, 7% 8%, 21% 0, 21% 100%, 8% 92%, 8% 71%, 0 68%)
     background: orange;
 }
 
+.fx2-parent-wrapper {
+    position: absolute;
+    right: 0;
+    background: red;
+    height: 100vh;
+  
+}
+
+.app-wrapper-fx2 {
+    position: absolute;
+    right: -2vw;
+    clip-path: polygon(
+  100% 38%,
+  93% 34%,
+  93% 8%,
+  79% 0,
+  79% 100%,
+  92% 92%,
+  92% 71%,
+  100% 68%
+);
+width: 10vw;
+height: 100vh;
+background: orange;
+z-index: 2;
+
+}
+
+.sidebar-panel {
+    position: absolute;
+    top: 0;
+    right: 100%; 
+    width: 10vw;
+    height: 100%;
+    background: green;
+    border-left: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    transform: translate(100%);
+     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+
+
+    z-index: 1;
+}
+
+.fx2-parent-wrapper:hover .sidebar-panel {
+    transform: translateX(0);
+}
+
+
 .app-wrapper-fx > div {
     position: absolute;
     overflow:visible;
@@ -34,15 +96,6 @@ clip-path: polygon(0 38%, 7% 34%, 7% 8%, 21% 0, 21% 100%, 8% 92%, 8% 71%, 0 68%)
     color: rgba(0, 0, 128, 0.616);
 }
 
-:root {
-    --col1: rgba(255, 192, 57, 0.909);
-    --col2: rgb(234, 117, 0);
-    --col3: #00e5ff;
-    --col4: #00c898;
-    --col5: #008b86;
-    --col6: #020725;
-    --col7: #030927;
-}
 
 
 ::-webkit-scrollbar {
