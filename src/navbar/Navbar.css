@@ -15,4 +15,5 @@
 .navbar-container a {
     text-decoration: none;
     color: white;
+    z-index: 2;
 }
