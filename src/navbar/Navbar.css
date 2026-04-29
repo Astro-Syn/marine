@@ -2,8 +2,17 @@
     background: black;
     display: flex;
     flex-direction: row;
-    gap: 1em;
+    gap: 4em;
     justify-content: center;
     align-items: center;
     height: 3em;
+    padding: 1em;
+    font-family: "Quantico";
+    letter-spacing: 1px;
+    font-size: 2em;
+}
+
+.navbar-container a {
+    text-decoration: none;
+    color: white;
 }

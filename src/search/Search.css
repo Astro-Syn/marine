@@ -1,11 +1,6 @@
 
-
-
-
-
 h1 {
     position: relative;
-    
     line-height: 1;
     font-size: 7em;
     font-weight: 900;
@@ -51,6 +46,8 @@ h1 {
     width: 90%;
     padding: 2px;
     display: inline-block;
+     clip-path: polygon(0 0, 12% 0, 15% 13%, 100% 17%, 100% 100%, 0 100%);
+     background: rgb(0, 2, 11);
     
 }
 
@@ -78,9 +75,13 @@ h1 {
     position: absolute;
     right: 0;
     top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transform: translateY(-50%);
     height: 80%;
-    padding: 1em;
+    padding-top: 0.8em;
     margin-right: 0.5em;
     background: none;
     border: none;

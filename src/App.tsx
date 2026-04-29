@@ -11,7 +11,9 @@ function App() {
   return (
     <>
     <div className='app-wrapper'>
-      <div className='app-wrapper-fx'></div>
+      <div className='app-wrapper-fx'>
+        <div>■■■AstroSyn</div>
+      </div>
       <div className='top-effect'></div>
               <div className="bubbles">
   {Array.from({ length: 15 }).map((_, i) => (

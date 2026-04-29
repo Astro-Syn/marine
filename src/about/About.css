@@ -1,0 +1,16 @@
+.about-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    padding: 2em;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: rgb(253, 240, 217);
+}
+
+.about-content {
+    width: 70%;
+}
