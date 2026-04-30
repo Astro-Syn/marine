@@ -14,6 +14,11 @@ h1 {
     letter-spacing: -5px;
     
 }
+
+.search-page-container {
+    height: 80vh;
+   
+}
     
 .under-title-text {
     display: flex;
@@ -39,6 +44,7 @@ h1 {
     margin-bottom: 1em;
      font-family: 'Quantico';
      
+     
 }
 
 .search-wrapper {
@@ -47,8 +53,7 @@ h1 {
     padding: 2px;
     display: inline-block;
      clip-path: polygon(0 0, 12% 0, 15% 13%, 100% 17%, 100% 100%, 0 100%);
-     background: rgb(0, 2, 11);
-    
+     background: rgb(0, 2, 11);   
 }
 
 .search-bar {
@@ -94,6 +99,7 @@ h1 {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 2em;
+           overflow: scroll;
           
 }
 

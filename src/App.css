@@ -8,6 +8,21 @@
     --col7: #030927;
 }
 
+body {
+   background-image: url('/public/Images/ocean-bg.jpg');
+   background-size: cover;
+   cursor: crosshair;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding-top: 2em;
+   flex-wrap: wrap;
+   overflow: hidden;
+
+   
+}
+
 
 .app-wrapper {
     position: fixed;
@@ -29,12 +44,12 @@ clip-path: polygon(0 38%, 7% 34%, 7% 8%, 21% 0, 21% 100%, 8% 92%, 8% 71%, 0 68%)
     height: 100vh;
     width: 10vw;
     background: orange;
+   
 }
 
 .fx2-parent-wrapper {
     position: absolute;
     right: 0;
-    
     height: 100vh;
     width: 100%;
   
@@ -71,16 +86,16 @@ z-index: 2;
     display: flex;
     flex-direction: column;
     padding: 2em;
-    transform: translate(-100%);
-    transition: transform 1s ease-out;
+
+    
+    transform: translateX(100%);
     opacity: 0;
-    z-index: 1;
+
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    z-index: 3; 
 }
 
-.fx2-parent-wrapper:hover .sidebar-panel {
-    transform: translateX(100%);
-    opacity: 1;
-}
+
 
 
 .app-wrapper-fx > div {
@@ -95,6 +110,7 @@ z-index: 2;
     top: 50%;
     transform: rotate(-90deg);
     color: rgba(0, 0, 128, 0.616);
+    
 }
 
 
@@ -119,19 +135,7 @@ z-index: 2;
     background: rgb(0, 2, 11); 
 }
 
-body {
-   background-image: url('/public/Images/ocean-bg.jpg');
-   background-size: cover;
-   cursor: crosshair;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   padding-top: 2em;
-   flex-wrap: wrap;
 
-   
-}
 
 .top-effect {
     position: fixed;
@@ -221,3 +225,4 @@ body {
     left: 85%;
     animation-duration: 10s;
 }
+
