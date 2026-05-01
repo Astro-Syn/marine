@@ -1,19 +1,31 @@
+.navbar-wrapper {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .navbar-container {
-    background: black;
+    background: rgba(0, 4, 10, 0.603);
     display: flex;
     flex-direction: row;
     gap: 4em;
     justify-content: center;
     align-items: center;
-    height: 3em;
+    width: 60%;
+    height: 1.6em;
     padding: 1em;
     font-family: "Quantico";
     letter-spacing: 1px;
     font-size: 2em;
+    clip-path: polygon(0 13%, 15% 12%, 20% 0, 40% 0, 44% 10%, 61% 10%, 65% 0, 100% 0, 100% 24%, 97% 36%, 97% 100%, 0 100%);
+    backdrop-filter: blur(2px);
 }
 
 .navbar-container a {
     text-decoration: none;
     color: white;
-    z-index: 2;
+    z-index: 0;
 }

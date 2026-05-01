@@ -13,6 +13,7 @@ function App() {
   return (
     <>
     <div className='app-wrapper'>
+      <div className="app-container">
       <div className='app-wrapper-fx'>
         <div>■■■AstroSyn</div>
 
@@ -41,6 +42,7 @@ function App() {
       <Route path='/about' element={<About/>}/>
     </Routes>
     
+    </div>
     </div>
     </>
   )

@@ -119,20 +119,9 @@ export default function Search() {
     <div className='search-page-container'>
        
 
-        <div className='grid-bg'/>
-        <div className='top-effect'/>
 
-        <div className="bubbles">
-  {Array.from({ length: 15 }).map((_, i) => (
-    <span key={i} />
-  ))}
-</div>
 
       <div className='scanner-wrapper'>
-
-      
-    
-      
 
         <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p></div>
       
@@ -157,7 +146,7 @@ export default function Search() {
       
       </div>
 
-      <div>
+      <div className='suggestions-area'>
         <p>Suggestions</p>
         <div className='btn-container'>
           <div className='btn-wrapper'>
@@ -240,29 +229,15 @@ export default function Search() {
       {selected && (
         <div
           onClick={() => setSelected(null)}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.85)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          className='if-selected'
+        
         >
           <div
             onClick={(e) => e.stopPropagation()}
             className='selected-info-card'
           >
-            {selected.image && (
-              <img
-                src={selected.image}
-                style={{ width: "100%", marginBottom: "1rem" }}
-              />
-            )}
-
+            
+            
           <div className='selected-name-wrapper'>
 
           
