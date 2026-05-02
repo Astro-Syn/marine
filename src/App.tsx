@@ -15,7 +15,7 @@ function App() {
     <div className='app-wrapper'>
       <div className="app-container">
       <div className='app-wrapper-fx'>
-        <div>■■■AstroSyn</div>
+        <div>■■■Astro-Syn</div>
 
        
       </div>
@@ -35,6 +35,7 @@ function App() {
       <div className='grid-bg'/>
         <div className='top-effect'/>
     <Title/>
+    
     <Navbar/>
 
     <Routes>

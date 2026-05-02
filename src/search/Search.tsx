@@ -20,6 +20,7 @@ export default function Search() {
   const [results, setResults] = useState<SpeciesWithImage[]>([]);
   const [selected, setSelected] = useState<SpeciesWithImage | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showSpeciesPanel, setShowSpeciesPanel] = useState(false);
 
   
   const safeFetchJSON = async (url: string) => {
@@ -55,7 +56,7 @@ export default function Search() {
     }
   };
 
-  
+
   const searchSpecies = async () => {
     if (!query.trim()) return;
 
@@ -118,13 +119,8 @@ export default function Search() {
   return (
     <div className='search-page-container'>
        
-
-
-
       <div className='scanner-wrapper'>
 
-        <div className='under-title-text'><p>[ Search Marine species by scientific name ] </p></div>
-      
       <div className="search-area">
         <div className='search-wrapper'>
 
@@ -175,8 +171,9 @@ export default function Search() {
             
            
         </div>
-        
+      
       </div>
+    
 
       
       {loading && <p>Loading...</p>}
@@ -188,7 +185,9 @@ export default function Search() {
         </p>
       )}
 
-      
+          <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
+          See more suggestions
+          </button>
       <div
         className='info-cards-container'
       >
@@ -281,6 +280,28 @@ export default function Search() {
         </div>
         </div>
       )}
+ 
+
+
+{showSpeciesPanel && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "300px",
+      height: "100vh",
+      background: "rgba(0,0,0,0.95)",
+      color: "white",
+      zIndex: 9999,
+      padding: "1rem",
+    }}
+  >
+    <button onClick={() => setShowSpeciesPanel(false)}>Close</button>
+    <p>testing</p>
+  </div>
+)}
+      
     </div>
     </div>
   );

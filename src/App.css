@@ -27,6 +27,7 @@ body {
     width: 60vw;
     height: 90vh;
     border: 2px solid orange;
+    border-radius: 0.4em;
     background: rgba(1, 0, 11, 0.87);    
 }
 
