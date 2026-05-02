@@ -2,6 +2,7 @@ import { useState } from "react";
 import './Search.css';
 import { LuSearch } from "react-icons/lu";
 import { MdImageNotSupported } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 
 interface WormsRecord {
   AphiaID: number;
@@ -168,14 +169,20 @@ export default function Search() {
               onClick={() => suggestedBtnNavs("Gadus morhua")}
               >Atlantic Cod</button>
           </div>
-            
+              <div className='btn-wrapper see-more'>
+                      <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
+          See more suggestions
+          </button>
+              </div>
            
         </div>
       
       </div>
     
 
-      
+      <div className='search-result-wrapper'>
+
+     
       {loading && <p>Loading...</p>}
 
       
@@ -184,10 +191,9 @@ export default function Search() {
           No results found. Try scientific names like "Delphinus".
         </p>
       )}
+      
 
-          <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
-          See more suggestions
-          </button>
+        
       <div
         className='info-cards-container'
       >
@@ -276,29 +282,236 @@ export default function Search() {
     </div>
   )}
 </div>
+
           </div>
         </div>
         </div>
       )}
+       </div>
  
 
 
 {showSpeciesPanel && (
   <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "300px",
-      height: "100vh",
-      background: "rgba(0,0,0,0.95)",
-      color: "white",
-      zIndex: 9999,
-      padding: "1rem",
-    }}
+  className='show-more-list'
   >
     <button onClick={() => setShowSpeciesPanel(false)}>Close</button>
-    <p>testing</p>
+  
+    <ul>
+
+          <li
+  onClick={() => {
+    setQuery("Semibalanus balanoides");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Acorn Barnacle <MdArrowOutward />
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Homarus americanus");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  American Lobster
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Balaenoptera musculus");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Blue Whale
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Zalophus californianus");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  California Sea Lion
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Amphiprion ocellaris");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Clown Anemonefish
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Octopus vulgaris");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Common Octopus
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Acanthaster planci");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Crown-of-thorns Starfish
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Macrocystis pyrifera");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Giant Kelp
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Architeuthis dux");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Giant Squid
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Carcharodon carcharias");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+ Great White Shark
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Phoca vitulina");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Harbor Seal
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Megaptera novaeangliae");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Humpback Whale
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Ascophyllum nodosum");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Knotted Wrack
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Aurelia aurita");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Moon Jellyfish
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Mola mola");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Ocean Sunfish
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Manta birostris");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Pacific Manta Ray
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Ursus maritimus");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Polar Bear
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Sphyrna lewini");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Scalloped Hammerhead
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Enhydra lutris");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Sea Otter
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Zostera marina");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Seagrass
+</li>
+
+<li
+  onClick={() => {
+    setQuery("Thunnus albacares");
+    setShowSpeciesPanel(false);
+    searchSpecies();
+  }}
+>
+  Yellowfin Tuna
+</li>
+
+
+</ul>
+
   </div>
 )}
       
