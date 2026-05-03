@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import './Search.css';
 import { LuSearch } from "react-icons/lu";
 import { MdImageNotSupported } from "react-icons/md";
@@ -23,6 +23,26 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [showSpeciesPanel, setShowSpeciesPanel] = useState(false);
 
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  
+
+ useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      showSpeciesPanel &&
+      panelRef.current &&
+      !panelRef.current.contains(event.target as Node)
+    ) {
+      setShowSpeciesPanel(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, [showSpeciesPanel]);
   
   const safeFetchJSON = async (url: string) => {
     try {
@@ -170,6 +190,7 @@ export default function Search() {
               >Atlantic Cod</button>
           </div>
               <div className='btn-wrapper see-more'>
+
                       <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
           See more suggestions
           </button>
@@ -291,11 +312,13 @@ export default function Search() {
  
 
 
-{showSpeciesPanel && (
-  <div
-  className='show-more-list'
-  >
-    <button onClick={() => setShowSpeciesPanel(false)}>Close</button>
+
+ <div 
+ ref={panelRef}
+ className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}>
+    <button 
+    className="close-menu-btn"
+    onClick={() => setShowSpeciesPanel(false)}>x</button>
   
     <ul>
 
@@ -306,7 +329,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Acorn Barnacle <MdArrowOutward />
+  Acorn Barnacle <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -316,7 +339,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  American Lobster
+  American Lobster <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -326,7 +349,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Blue Whale
+  Blue Whale <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -336,7 +359,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  California Sea Lion
+  California Sea Lion <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -346,7 +369,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Clown Anemonefish
+  Clown Anemonefish <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -356,7 +379,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Common Octopus
+  Common Octopus <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -366,7 +389,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Crown-of-thorns Starfish
+  Crown-of-thorns Starfish <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -376,7 +399,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Giant Kelp
+  Giant Kelp <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -386,7 +409,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Giant Squid
+  Giant Squid <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -396,7 +419,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
- Great White Shark
+ Great White Shark <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -406,7 +429,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Harbor Seal
+  Harbor Seal <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -416,7 +439,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Humpback Whale
+  Humpback Whale <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -426,7 +449,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Knotted Wrack
+  Knotted Wrack <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -436,7 +459,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Moon Jellyfish
+  Moon Jellyfish <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -446,7 +469,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Ocean Sunfish
+  Ocean Sunfish <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -456,7 +479,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Pacific Manta Ray
+  Pacific Manta Ray <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -466,7 +489,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Polar Bear
+  Polar Bear <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -476,7 +499,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Scalloped Hammerhead
+  Scalloped Hammerhead <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -486,7 +509,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Sea Otter
+  Sea Otter <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -496,7 +519,7 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Seagrass
+  Seagrass <MdArrowOutward className='arrow-icon'/>
 </li>
 
 <li
@@ -506,14 +529,14 @@ export default function Search() {
     searchSpecies();
   }}
 >
-  Yellowfin Tuna
+  Yellowfin Tuna <MdArrowOutward className='arrow-icon'/>
 </li>
 
 
 </ul>
 
   </div>
-)}
+
       
     </div>
     </div>
