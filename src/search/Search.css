@@ -1,10 +1,9 @@
-
 h1 {
     position: relative;
     line-height: 1;
     font-size: 7em;
     font-weight: 900;
-    color: var(--col1);
+    color: rgb(255, 219, 165);
       text-shadow: 
     0 0 3px #cb1f00,
     0 0 5px #e32a00,
@@ -438,11 +437,46 @@ h1 {
     background: white;
     z-index: 99;
 }
+
+.see-more {
+    z-index: 99;
+    width: 16vw;
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1.4em;
+}
+
+
 .show-more-btn {
-    position: relative;
+   display: flex;
     cursor: pointer;
     letter-spacing: 1px;
-    font-size: 1.4em;
+    width: 10vw;
+    background: none;
+    border: none;
+    flex-direction: row;
+    padding: 0;
+    color: aqua;
+    font-family: "Orbitron";
+
+}
+
+.show-more-btn p {
+       font-size: 1.5em;
+       width: 100%;
+}
+
+.show-more-btn span {
+    background: orange;
+    width: 50px;
+    height: 50px;
+    color: navy;
+    font-size: 2.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 .show-more-list {

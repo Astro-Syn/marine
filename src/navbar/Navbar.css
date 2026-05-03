@@ -39,3 +39,42 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 }
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 1em;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+
+.nav-link:hover {
+    color: #00f0ff;
+}
+
+
+.nav-link.active {
+    color: #abf9ff;
+}
+
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #00f0ff, transparent);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}

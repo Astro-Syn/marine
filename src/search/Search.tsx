@@ -3,6 +3,7 @@ import './Search.css';
 import { LuSearch } from "react-icons/lu";
 import { MdImageNotSupported } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
+import { LuArrowUpLeft } from "react-icons/lu";
 
 interface WormsRecord {
   AphiaID: number;
@@ -189,14 +190,15 @@ export default function Search() {
               onClick={() => suggestedBtnNavs("Gadus morhua")}
               >Atlantic Cod</button>
           </div>
-              <div className='btn-wrapper see-more'>
-
-                      <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
-          See more suggestions
-          </button>
-              </div>
+              
            
         </div>
+        <div className='see-more'>
+
+                      <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
+         <span><LuArrowUpLeft /></span> <p>See more suggestions </p>
+          </button>
+              </div>
        <div className='search-result-wrapper-deco'></div>
       </div>
     

@@ -23,7 +23,7 @@ function App() {
              <div className="app-wrapper-fx2">
          
         </div>
-         <div className='sidebar-panel'>Menu</div>
+        
       </div>
     
       <div className='top-effect'></div>
