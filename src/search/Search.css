@@ -12,14 +12,11 @@ h1 {
     0 0 15px #e65100,
     0 0 25px #e60f00;
     letter-spacing: -5px;
-    
 }
 
 .search-page-container {
-    height: 55vh;
-   
+    height: 55vh;   
     z-index: 1;
- 
 }
     
 .under-title-text {
@@ -44,38 +41,34 @@ h1 {
 }
 
 
-
 .search-area {
     height: 10vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
     margin-bottom: 1em;
      font-family: 'Quantico';
-     
-     
 }
 
 .search-wrapper {
     position: relative;
     width: 90%;
+    height: 7vh;
     padding: 2px;
     display: inline-block;
-     clip-path: polygon(0 0, 12% 0, 15% 13%, 100% 17%, 100% 100%, 0 100%);
-     background: rgb(0, 2, 11);   
+   clip-path: polygon(0 0, 100% 0, 100% 78%, 94% 100%, 76% 100%, 68% 86%, 46% 84%, 40% 100%, 4% 100%, 0% 85%);
+     background:  rgb(255, 77, 0);  
+     margin-bottom: 2.2em; 
      
 }
 
 .search-bar {
     width: 90%;
-    padding: 1em 0;
-    padding-left: 1em;
    border: none;
     font-size: 1em;
-    clip-path: polygon(0 0, 12% 0, 15% 13%, 100% 17%, 100% 100%, 0 100%);
-    background: rgb(0, 2, 11);
+     clip-path: polygon(0 0, 100% 0, 100% 78%, 94% 100%, 76% 100%, 68% 86%, 46% 84%, 40% 100%, 4% 100%, 0% 85%);
+    background: rgb(0, 5, 26);
     font-family: "Orbitron";
     letter-spacing: 1px;
     padding: 1.5em;
@@ -83,9 +76,9 @@ h1 {
 
 
 .search-bar:focus {
-    background: rgb(0, 0, 0);
+    background: rgba(0, 10, 15, 0.954);
    border: none;
-  outline: none;
+  outline: 1px solid white;
 }
 
 .search-btn {
@@ -399,11 +392,19 @@ h1 {
 }
 
 .search-result-wrapper {
-    border-top: 2px solid aqua;
+    position: relative;
     margin-top: 1em;
     height: 30vh;
     overflow-y: auto;
    
+}
+
+.search-result-wrapper-deco {
+   margin-top: 2em;
+    width: 50vw;
+    height: 2px;
+    background: rgb(224, 255, 255);
+    box-shadow: 0 0 10px aqua;
 }
 
 

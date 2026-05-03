@@ -197,12 +197,12 @@ export default function Search() {
               </div>
            
         </div>
-      
+       <div className='search-result-wrapper-deco'></div>
       </div>
     
 
       <div className='search-result-wrapper'>
-
+           
      
       {loading && <p>Loading...</p>}
 
