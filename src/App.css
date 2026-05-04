@@ -17,7 +17,7 @@ body {
    justify-content: center;
    align-items: center;
    flex-wrap: wrap;
-   overflow: hidden;   
+   overflow-y: auto;   
    
 
 }

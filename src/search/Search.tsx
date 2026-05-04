@@ -23,8 +23,11 @@ export default function Search() {
   const [selected, setSelected] = useState<SpeciesWithImage | null>(null);
   const [loading, setLoading] = useState(false);
   const [showSpeciesPanel, setShowSpeciesPanel] = useState(false);
+  const [highlightInput, setHighlightInput] = useState(false);
 
   const panelRef = useRef<HTMLDivElement | null>(null);
+
+
   
 
  useEffect(() => {
@@ -144,7 +147,7 @@ export default function Search() {
       <div className='scanner-wrapper'>
 
       <div className="search-area">
-        <div className='search-wrapper'>
+        <div className={`search-wrapper ${highlightInput ? "highlight" : ""}`}>
 
         
         <input
@@ -152,7 +155,7 @@ export default function Search() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && searchSpecies()}
           placeholder="Search Marine Species..."
-          className='search-bar'
+          className="search-bar"
         />
         <button 
         className='search-btn'
@@ -348,6 +351,11 @@ export default function Search() {
   onClick={() => {
     setQuery("Balaenoptera musculus");
     setShowSpeciesPanel(false);
+    setHighlightInput(true);
+
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
