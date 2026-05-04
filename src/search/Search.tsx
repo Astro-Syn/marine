@@ -82,8 +82,9 @@ export default function Search() {
   };
 
 
-  const searchSpecies = async () => {
-    if (!query.trim()) return;
+  const searchSpecies = async (forcedQuery?: string) => {
+    const q = forcedQuery ?? query;
+    if (!q.trim()) return;
 
     setLoading(true);
     setSelected(null);
@@ -91,7 +92,7 @@ export default function Search() {
     try {
       
       let data = await safeFetchJSON(
-        `https://www.marinespecies.org/rest/AphiaRecordsByName/${query}?like=true&marine_only=true`
+        `https://www.marinespecies.org/rest/AphiaRecordsByName/${q}?like=true&marine_only=true`
       );
 
       
@@ -159,7 +160,7 @@ export default function Search() {
         />
         <button 
         className='search-btn'
-        onClick={searchSpecies}>
+        onClick={() => searchSpecies()}>
             
             <LuSearch size={20}/>
             </button>
@@ -331,6 +332,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Semibalanus balanoides");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -341,6 +346,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Homarus americanus");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -352,7 +361,6 @@ export default function Search() {
     setQuery("Balaenoptera musculus");
     setShowSpeciesPanel(false);
     setHighlightInput(true);
-
     setTimeout(() => {
     setHighlightInput(false);
   }, 600);
@@ -366,6 +374,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Zalophus californianus");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -376,6 +388,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Amphiprion ocellaris");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -386,6 +402,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Octopus vulgaris");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -396,6 +416,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Acanthaster planci");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -406,6 +430,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Macrocystis pyrifera");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -416,6 +444,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Architeuthis dux");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -426,6 +458,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Carcharodon carcharias");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -436,6 +472,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Phoca vitulina");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -446,6 +486,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Megaptera novaeangliae");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -456,6 +500,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Ascophyllum nodosum");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -466,6 +514,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Aurelia aurita");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -476,6 +528,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Mola mola");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -486,6 +542,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Manta birostris");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -496,6 +556,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Ursus maritimus");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -506,6 +570,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Sphyrna lewini");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -516,6 +584,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Enhydra lutris");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -526,6 +598,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Zostera marina");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
@@ -536,6 +612,10 @@ export default function Search() {
   onClick={() => {
     setQuery("Thunnus albacares");
     setShowSpeciesPanel(false);
+      setHighlightInput(true);
+    setTimeout(() => {
+    setHighlightInput(false);
+  }, 600);
     searchSpecies();
   }}
 >
