@@ -27,3 +27,12 @@
         transform: translateY(0);
     }
 }
+
+
+@media screen and (max-width: 480px){
+  
+    .about-wrapper {
+        height: 90%;
+    }
+ 
+}

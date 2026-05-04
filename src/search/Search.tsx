@@ -322,10 +322,8 @@ export default function Search() {
  <div 
  ref={panelRef}
  className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}>
-    <button 
-    className="close-menu-btn"
-    onClick={() => setShowSpeciesPanel(false)}>x</button>
-  
+    
+  <div>
     <ul>
 
           <li
@@ -624,6 +622,10 @@ export default function Search() {
 
 
 </ul>
+</div>
+<button 
+    className="close-menu-btn"
+    onClick={() => setShowSpeciesPanel(false)}>close</button>
 
   </div>
 

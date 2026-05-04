@@ -78,3 +78,18 @@
 .nav-link.active::after {
     width: 100%;
 }
+
+
+
+@media screen and (max-width: 480px){
+.navbar-wrapper {
+    margin-top: 3em;
+}
+
+.navbar-container {
+    gap: 2em;
+    width: 80vw;
+}
+
+ 
+}

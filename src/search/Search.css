@@ -573,6 +573,9 @@ h1 {
     opacity: 0;
     pointer-events: none;
     transition: transform 0.4s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .show-more-list.open {
@@ -666,8 +669,38 @@ h1 {
 }
 
 .close-menu-btn {
-    border: none;
+    border: 1px solid orange;
     background: none;
-    color: rgb(255, 247, 240);
-    font-size: 3em;
+    color: rgb(173, 255, 255);
+    font-size: 1em;
+    font-family: "Orbitron";
+    letter-spacing: 5px;
+    padding: 0.3em;
+    margin-left: 1em;
+    width: 5vw;
+    cursor: pointer;
+}
+
+/*screen sizes */
+
+@media screen and (max-width: 480px){
+  .search-page-container {
+    height: 100vh;
+  }
+
+
+  h1 {
+    font-size: 5em;
+  }
+
+  .search-area {
+    height: 11vh;
+    width: 98%;
+  }
+
+  .search-wrapper {
+    padding: 4px;
+    width: 96%;
+  }
+ 
 }
