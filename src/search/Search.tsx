@@ -12,6 +12,12 @@ interface WormsRecord {
   authority: string;
   rank: string;
   status: string;
+
+  isMarine?: number | null;
+  isBrackish?: number | null;
+  isFreshwater?: number | null;
+  isTerrestrial?: number | null;
+  isExtinct?: number | null;
 }
 
 interface SpeciesWithImage extends WormsRecord {
@@ -29,6 +35,12 @@ export default function Search() {
   const panelRef = useRef<HTMLDivElement | null>(null);
 
 
+
+const fetchSpeciesDetails = async (aphiaID: number) => {
+  return await safeFetchJSON(
+    `https://www.marinespecies.org/rest/AphiaRecordByAphiaID/${aphiaID}`
+  );
+};
   
 
  useEffect(() => {
@@ -82,6 +94,17 @@ export default function Search() {
     }
   };
 
+  const getHabitats = (s: SpeciesWithImage) => {
+  const habitats = [];
+
+  if (s.isMarine) habitats.push("🌊 Ocean");
+  if (s.isBrackish) habitats.push("🌗 Brackish");
+  if (s.isFreshwater) habitats.push("💧 Freshwater");
+  if (s.isTerrestrial) habitats.push("🌍 Land");
+
+  return habitats.length ? habitats.join(", ") : "Unknown habitat";
+};
+
 
   const searchSpecies = async (forcedQuery?: string) => {
     const q = forcedQuery ?? query;
@@ -124,12 +147,18 @@ export default function Search() {
       const sliced = data.slice(0, 6);
 
       
-      const withImages = await Promise.all(
-        sliced.map(async (item: WormsRecord) => {
-          const img = await fetchImage(item.scientificname);
-          return { ...item, image: img };
-        })
-      );
+    const withImages = await Promise.all(
+  sliced.map(async (item: WormsRecord) => {
+    const img = await fetchImage(item.scientificname);
+    const details = await fetchSpeciesDetails(item.AphiaID);
+
+    return {
+      ...item,
+      image: img,
+      ...details, 
+    };
+  })
+);
 
       setResults(withImages);
     } catch (err) {
@@ -292,6 +321,15 @@ export default function Search() {
     <strong> Scientific Rank</strong><br />
     {selected.rank}
   </p>
+  <p>
+  <strong>🌍 Habitat</strong><br />
+  {getHabitats(selected)}
+</p>
+
+<p>
+  <strong> Status</strong><br />
+  {selected.isExtinct ? "Extinct species" : "Currently existing"}
+</p>
 
   <p>
     <strong> Conservation Status</strong><br />
