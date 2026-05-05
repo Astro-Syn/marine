@@ -4,6 +4,7 @@ import { LuSearch } from "react-icons/lu";
 import { MdImageNotSupported } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
 import { LuArrowUpLeft } from "react-icons/lu";
+import { IoCloseSharp } from "react-icons/io5";
 
 interface WormsRecord {
   AphiaID: number;
@@ -280,15 +281,31 @@ export default function Search() {
   {selected.scientificname}
 </h2>
 
-            <div className='status-wrapper'>
-              
-            <p><strong>Authority__</strong> {selected.authority || "Unknown"}</p>
+           <div className='status-wrapper'>
 
-            <p><strong>Rank__</strong> {selected.rank}</p>
+  <p>
+    <strong> What is it?</strong><br />
+    A marine species found in global ocean ecosystems.
+  </p>
 
-            <p><strong>Status__</strong> {selected.status}</p>
+  <p>
+    <strong> Scientific Rank</strong><br />
+    {selected.rank}
+  </p>
 
-            </div>
+  <p>
+    <strong> Conservation Status</strong><br />
+    {selected.status === "accepted"
+      ? "Recognized species"
+      : selected.status || "Unknown"}
+  </p>
+
+  <p>
+    <strong> Scientific Name</strong><br />
+    {selected.scientificname}
+  </p>
+
+</div>
              <div className='selected-name-img-area'>
   {selected.image ? (
     <img
@@ -625,7 +642,12 @@ export default function Search() {
 </div>
 <button 
     className="close-menu-btn"
-    onClick={() => setShowSpeciesPanel(false)}>close</button>
+    onClick={() => setShowSpeciesPanel(false)}>
+      <span>
+        <IoCloseSharp />
+      </span>
+      close
+      </button>
 
   </div>
 
