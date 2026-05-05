@@ -82,14 +82,40 @@
 
 
 @media screen and (max-width: 480px){
+
 .navbar-wrapper {
-    margin-top: 3em;
+    position: fixed;
+    top: 5em;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    margin-top: 0;
+
+    /* simplify shape for mobile */
+    clip-path: none;
+    padding: 0.5em 0;
 }
 
 .navbar-container {
-    gap: 2em;
-    width: 80vw;
+    width: 90%;
+    height: auto;
+    flex-wrap: wrap; /* allows wrapping instead of overflow */
+    gap: 0.5em;
+    padding: 0.6em;
+
+    border-radius: 0.6em;
 }
 
- 
+/* make links more touch-friendly */
+.nav-link {
+    flex: 1 1 40%; /* 2 per row */
+    text-align: center;
+    font-size: 0.9em;
+    padding: 0.8em 0.5em;
+}
+
+/* reduce hover effects for mobile (optional but cleaner) */
+.nav-link::after {
+    height: 1px;
+}
 }

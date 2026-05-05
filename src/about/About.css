@@ -9,6 +9,7 @@
     line-height: 2;
     letter-spacing: 1px;
     color: rgb(253, 240, 217);
+    z-index: 3;
 }
 
 .about-content {
@@ -30,9 +31,17 @@
 
 
 @media screen and (max-width: 480px){
-  
+
     .about-wrapper {
-        height: 90%;
+        height: calc(100vh - 8em); 
+        overflow-y: auto;
+        padding: 1.5em 1em;
+        line-height: 1.6;
     }
- 
+
+    .about-content {
+        width: 100%;
+        padding: 1em;
+        font-size: 0.95em;
+    }
 }

@@ -1,17 +1,4 @@
-h1 {
-    position: relative;
-    line-height: 1;
-    font-size: 7em;
-    font-weight: 900;
-    color: rgb(255, 219, 165);
-      text-shadow: 
-    0 0 3px #cb1f00,
-    0 0 5px #e32a00,
-    0 0 10px #e63a00,
-    0 0 15px #e65100,
-    0 0 25px #e60f00;
-    letter-spacing: -5px;
-}
+
 
 .search-page-container {
     height: 55vh;   
@@ -58,8 +45,7 @@ h1 {
     display: inline-block;
    clip-path: polygon(0 0, 100% 0, 100% 78%, 94% 100%, 76% 100%, 68% 86%, 46% 84%, 40% 100%, 4% 100%, 0% 85%);
      background:  rgb(255, 77, 0);  
-     margin-bottom: 2.2em; 
-     
+     margin-bottom: 2.2em;     
 }
 
 .search-bar {
@@ -132,11 +118,31 @@ h1 {
 }
 
 .suggestions-area {
-    padding-top: 2em;
+position: relative;
+padding-top: 2em;
+height: 25vh;
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ background: rgba(4, 0, 20, 0.525);
+clip-path: polygon(0 13%, 5% 0, 17% 0%, 20% 8%, 47% 8%, 51% 0%, 72% 0%, 74% 10%, 97% 11%, 100% 0, 100% 100%, 83% 100%, 80% 95%, 61% 95%, 58% 100%, 36% 100%, 31% 97%, 3% 96%, 0 100%);
+z-index: 2;
+filter: drop-shadow(0 300px 10px rgba(22, 253, 253, 0.6));
+padding: 2px;
+
+}
+
+
+.suggestions-area::before {
+    position: absolute;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    height: 6%;
+    background: rgb(198, 255, 250);
+   clip-path: polygon(0 13%, 5% 0, 17% 0%, 20% 8%, 47% 8%, 51% 0%, 72% 0%, 74% 10%, 97% 11%, 100% 0, 100% 100%, 83% 100%, 80% 95%, 61% 95%, 58% 100%, 36% 100%, 31% 97%, 3% 96%, 0 100%);
+   
 }
 
 .suggestions-area p {
@@ -147,6 +153,23 @@ h1 {
     
 }
 
+
+.search-result-wrapper {
+    position: relative;
+    margin-top: 1em;
+    height: 25vh;
+    overflow-y: auto;
+   
+}
+
+.search-result-wrapper-deco {
+    position: absolute;
+    bottom: 17px;
+    width: 100vw;
+    height: 2px;
+    background: rgb(224, 255, 255);
+    box-shadow: 0 0 10px aqua;
+}
 
 .info-cards-container {
     background: rgba(0, 0, 0, 0.555);
@@ -216,7 +239,6 @@ h1 {
 
 .btn-wrapper {
     padding: 2px;
-
     clip-path: polygon(0 0, 29% 0, 36% 10%, 100% 9%, 100% 100%, 0 100%, 0 22%);
     backdrop-filter: blur(3px);
 }
@@ -233,8 +255,10 @@ h1 {
     backdrop-filter: blur(3px);
     clip-path: polygon(0 0, 29% 0, 36% 10%, 100% 9%, 100% 100%, 0 100%, 0 22%);
     border: none;
-    color: orange;
+    color: rgb(255, 239, 209);
     z-index: 1;
+    font-size: 1em;
+    letter-spacing: 2px;
     transition: 0.2s ease-in;
 }
 
@@ -421,21 +445,7 @@ h1 {
     }
 }
 
-.search-result-wrapper {
-    position: relative;
-    margin-top: 1em;
-    height: 25vh;
-    overflow-y: auto;
-   
-}
 
-.search-result-wrapper-deco {
-   margin-top: 2em;
-    width: 50vw;
-    height: 2px;
-    background: rgb(224, 255, 255);
-    box-shadow: 0 0 10px aqua;
-}
 
 
 .status-wrapper {
@@ -478,8 +488,10 @@ h1 {
     flex-direction: row;
     align-items: center;
     margin-top: 1.4em;
-    border: 1px solid orange;
+    border: 1px solid rgb(255, 192, 76);
     overflow: hidden;
+    background: rgba(3, 1, 28, 0.744);
+    backdrop-filter: blur(3px);
 }
 
 
@@ -522,16 +534,17 @@ h1 {
 
 
 .show-more-btn {
+    background: none;
    display: flex;
     cursor: pointer;
     letter-spacing: 1px;
     width: 10vw;
-    background: none;
     border: none;
     flex-direction: row;
     padding: 0;
     color: aqua;
     font-family: "Orbitron";
+   
 
 }
 
@@ -548,7 +561,11 @@ h1 {
 
 
 .show-more-btn span {
-    background: orange;
+     background: linear-gradient(
+        to bottom,
+        orange 10%,
+        rgb(255, 77, 0) 50%
+    );
     width: 35px;
     height: 35px;
     color: navy;
@@ -685,22 +702,31 @@ h1 {
 
 @media screen and (max-width: 480px){
   .search-page-container {
-    height: 100vh;
+    height: 80vh;
+    width: 95%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
   }
 
-
-  h1 {
-    font-size: 5em;
-  }
-
-  .search-area {
-    height: 11vh;
-    width: 98%;
+ .search-area {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 12.5em;
+    
   }
 
   .search-wrapper {
     padding: 4px;
-    width: 96%;
+    width: 100%;
   }
+
+  .search-btn {
+     transform: translateY(-50%) translateX(-30%);
+     
+  }
+
+
  
 }
