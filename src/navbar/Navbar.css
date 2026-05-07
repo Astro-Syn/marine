@@ -13,6 +13,7 @@
         rgb(255, 77, 0) 50%
     );
     
+    
 }
 
 .navbar-container {
@@ -90,8 +91,6 @@
     width: 100%;
     z-index: 9;
     margin-top: 0;
-
-    /* simplify shape for mobile */
     clip-path: none;
     padding: 0.5em 0;
 }
@@ -99,22 +98,22 @@
 .navbar-container {
     width: 90%;
     height: auto;
-    flex-wrap: wrap; /* allows wrapping instead of overflow */
+    flex-wrap: wrap; 
     gap: 0.5em;
     padding: 0.6em;
 
     border-radius: 0.6em;
 }
 
-/* make links more touch-friendly */
+
 .nav-link {
-    flex: 1 1 40%; /* 2 per row */
+    flex: 1 1 40%; 
     text-align: center;
     font-size: 0.9em;
     padding: 0.8em 0.5em;
 }
 
-/* reduce hover effects for mobile (optional but cleaner) */
+
 .nav-link::after {
     height: 1px;
 }

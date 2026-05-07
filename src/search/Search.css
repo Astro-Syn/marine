@@ -222,7 +222,6 @@ padding: 2px;
         cursor: crosshair;
         width: 300px;
         height: 300px;
-        
         max-width: 10vw;
         transition: 0.3s;
         
@@ -303,6 +302,7 @@ padding: 2px;
 
 .info-card-img-area {  
     height: 150px;
+    width: auto;
     background: black;
     display: flex;
     align-items: center;
@@ -318,8 +318,8 @@ padding: 2px;
     padding: 4rem;
     max-width: 550px;
     width: 90%;
-    height: 50%;
-    z-index: 3;
+    height: 70%;
+    z-index: 99;
     opacity: 0;
     transform: scale(0.85) translateY(40px);
     filter: blur(10px);
@@ -789,14 +789,16 @@ padding: 2px;
 
 @media screen and (max-width: 480px){
   .search-page-container {
-    height: 80vh;
-    width: 95%;
+    min-height: 100vh;
+    width: 100%;
    display: flex;
    flex-direction: column;
    justify-content: center;
   }
 
  .search-area {
+    position: sticky;
+    top: 0;
     width: 100%;
     position: fixed;
     left: 0;
@@ -807,6 +809,8 @@ padding: 2px;
   .search-wrapper {
     padding: 4px;
     width: 100%;
+    z-index: 99;
+    margin-bottom: 0;
   }
 
   .search-btn {
@@ -816,7 +820,6 @@ padding: 2px;
 
   .search-result-wrapper {
     height: 70vh;
-
     display: flex;
     flex-direction: column;
     
@@ -824,14 +827,19 @@ padding: 2px;
   }
 
 .suggestions-area {
-    top: 0;
+    position: sticky;
+    top: 12rem;
     height: 30vh;
     margin-top: 30em;
+    background: rgb(1, 4, 26);
+    z-index: 2;
+    clip-path: none;
+
 
 }
 
 .btn-container {
-    background: yellow;
+
     overflow-x: auto;
     padding: 2em;
 }
@@ -843,7 +851,7 @@ padding: 2px;
 }
 
 .see-more {
-    width: 50vw;
+    width: 70vw;
 }
 
 .show-more-btn {
@@ -853,5 +861,24 @@ padding: 2px;
 .info-card {
     max-width: 500px;
 }
+
+.suggestions-area::after{
+    background: none;
+}
+
+.search-result-wrapper-deco{
+    position: sticky;
+    margin-top: 1em;
+    top: 5.5rem;
+}
  
+.suggestions-area::before{
+    bottom: 2em;
+    
+}
+
+.selected-info-card {
+    z-index: 99;
+    margin-top: 9em;
+}
 }
