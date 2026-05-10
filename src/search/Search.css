@@ -680,7 +680,6 @@ padding: 2px;
     z-index: 2; 
 }
 
-
 .show-more-list.open {
     transform: translateX(0);
     opacity: 1;
@@ -827,6 +826,21 @@ padding: 2px;
 
     .see-more p {
         padding-left: 2em;
+    }
+
+    .show-more-list{
+        width: 20vw;
+    }
+
+    .show-more-list-only{
+        overflow-y: auto;
+        width: 88%;
+        height: 80%;
+    }
+
+    .close-menu-btn {
+        width: 10vw;
+        margin-bottom: 1em;
     }
 
     

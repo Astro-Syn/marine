@@ -211,6 +211,18 @@ z-index: 2;
     animation-duration: 10s;
 }
 
+@media screen and (min-width: 993px) and (max-width: 1940px){
+.app-container {
+    min-height: 100vh;
+    height: auto;
+}
+
+.app-wrapper {
+    min-height: 100vh;
+    height: auto;
+}
+}
+
 
 @media screen and (max-width: 480px){
 
