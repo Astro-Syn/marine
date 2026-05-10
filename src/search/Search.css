@@ -266,10 +266,12 @@ padding: 2px;
     justify-content: center;
     align-items: center;
     margin-top: 1em;
+    z-index: 99;
 }
 
 .btn-wrapper {
     padding: 2px;
+    background: rgb(0, 1, 8);
     clip-path: polygon(0 0, 29% 0, 36% 10%, 100% 9%, 100% 100%, 0 100%, 0 22%);
     backdrop-filter: blur(3px);
 }
@@ -316,9 +318,8 @@ padding: 2px;
 .selected-info-card {
     position: relative;
     padding: 4rem;
-    max-width: 550px;
-    width: 90%;
-    height: 70%;
+    max-width: 650px;
+    height: 80%;
     z-index: 99;
     opacity: 0;
     transform: scale(0.85) translateY(40px);
@@ -365,7 +366,20 @@ padding: 2px;
     content: "";
     position: absolute;
     inset: 3px; 
-    background: black;
+    
+           background: repeating-linear-gradient(
+        to bottom,
+        rgb(0, 4, 37) 0px,
+        rgba(0, 16, 49, 0.925) 19px,
+        transparent 20px,
+        transparent 20px
+    );
+
+    background-size: 100% 20px; 
+    background-position: 0 0;
+
+    pointer-events: none;
+    animation: scanlines 1.2s linear infinite;
     clip-path: polygon(0 10%, 8% 0, 61% 0, 66% 4%, 92% 5%, 100% 11%, 100% 100%, 9% 100%, 0 91%);
     z-index: 1;
 }
@@ -392,6 +406,7 @@ padding: 2px;
 .selected-name-wrapper {
     width: 100%;
     height: 100%;
+    background: black;
     border: 1px solid orange;
     display: flex;
     flex-direction: column-reverse;
@@ -483,6 +498,7 @@ padding: 2px;
 .status-wrapper {
     border: 1px solid orange;
     width: 80%; 
+    background: black;
 }
 
 .status-wrapper p {
@@ -525,6 +541,8 @@ padding: 2px;
     background: rgba(3, 1, 28, 0.744);
     backdrop-filter: blur(3px);
 }
+
+
 
 
 .see-more::before {
@@ -787,6 +805,33 @@ padding: 2px;
 
 /*screen sizes */
 
+@media screen and (min-width: 993px) and (max-width: 1940px) {
+    .search-page-container {
+        height: 100vh;
+        background: rgb(0, 4, 19);   
+    }
+
+    .search-wrapper {
+        height: 9vh;
+    }
+    
+    .suggestions-area {
+        height: 30vh;
+    }
+
+    .see-more {
+        width: 17vw;
+        height: 5vh;
+        white-space: nowrap;
+    }
+
+    .see-more p {
+        padding-left: 2em;
+    }
+
+    
+}
+
 @media screen and (max-width: 480px){
   .search-page-container {
     min-height: 100vh;
@@ -834,12 +879,12 @@ padding: 2px;
     background: rgb(1, 4, 26);
     z-index: 2;
     clip-path: none;
+    filter: none;
 
 
 }
 
 .btn-container {
-
     overflow-x: auto;
     padding: 2em;
 }
@@ -874,11 +919,49 @@ padding: 2px;
  
 .suggestions-area::before{
     bottom: 2em;
-    
 }
 
 .selected-info-card {
     z-index: 99;
     margin-top: 9em;
 }
+
+.show-more-list {
+    width: 90vw;
+    height: 100dvh;
+    z-index: 999;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.show-more-list > * {
+    z-index: 99;
+}
+
+.show-more-list ul {
+    overflow-y: auto;
+}
+
+.show-more-list ul li {
+    overflow: visible;
+    width: 30vw;
+}
+
+.show-more-list-only {
+    overflow-y: auto;
+}
+
+.close-menu-btn {
+    width: 34vw;
+    position: fixed;
+    top: 0;
+    right: 3em;
+    
+}
+
+
 }

@@ -378,7 +378,7 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
  ref={panelRef}
  className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}>
     
-  <div>
+  <div className='show-more-list-only'>
     <ul>
 
           <li

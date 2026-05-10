@@ -79,8 +79,11 @@
 .nav-link.active::after {
     width: 100%;
 }
-
-
+@media screen and (min-width: 993px) and (max-width: 1940px) {
+    .navbar-wrapper {
+       height: 15vh;
+    }
+}
 
 @media screen and (max-width: 480px){
 
@@ -89,7 +92,7 @@
     top: 5em;
     left: 0;
     width: 100%;
-    z-index: 9;
+    z-index: 0;
     margin-top: 0;
     clip-path: none;
     padding: 0.5em 0;
