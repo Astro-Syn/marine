@@ -1,7 +1,7 @@
 h1 {
     position: relative;
     line-height: 1;
-    font-size: 7em;
+     font-size: clamp(2.5em, 8vw, 7em); 
     font-weight: 900;
     color: rgb(255, 219, 165);
       text-shadow: 
@@ -13,9 +13,18 @@ h1 {
     letter-spacing: -5px;
 }
 
+@media screen and (max-width: 768px){
+   h1 {
+    position: fixed;
+    top: 0;
+    right: 10%;
+    white-space: nowrap;
+    font-size: 4em;
+   }
+}
+
 @media screen and (max-width: 480px){
     h1 {
-        font-size: clamp(2.5em, 8vw, 3.5em); 
         letter-spacing: -1px; 
         text-align: center;
         padding: 0 0.5em;       
@@ -25,9 +34,11 @@ h1 {
             0 0 6px #e63a00;
 
         line-height: 1.1;
-        word-break: break-word;
+
         position: fixed;
         top: 0;
+        font-size: 2.5em;
         left: 0;
+        right: auto; 
     }
 }

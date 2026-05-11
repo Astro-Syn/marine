@@ -120,7 +120,7 @@
 .suggestions-area {
 position: relative;
 padding-top: 2em;
-height: 20vh;
+height: 28vh;
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -139,7 +139,7 @@ padding: 2px;
     bottom: 0;
     content: "";
     width: 100%;
-    height: 6%;
+    height: 5%;
     background: rgb(198, 255, 250);
    clip-path: polygon(0 13%, 5% 0, 17% 0%, 20% 8%, 47% 8%, 51% 0%, 72% 0%, 74% 10%, 97% 11%, 100% 0, 100% 100%, 83% 100%, 80% 95%, 61% 95%, 58% 100%, 36% 100%, 31% 97%, 3% 96%, 0 100%);
    
@@ -179,7 +179,7 @@ padding: 2px;
 }
 
 .suggestions-area p {
-    margin: 0;
+    z-index: 99;
     font-size: 2em;
     letter-spacing: 2px;
     color: rgb(156, 255, 255);
@@ -196,7 +196,7 @@ padding: 2px;
 
 .search-result-wrapper-deco {
     position: absolute;
-    bottom: 17px;
+    bottom: 15px;
     width: 100vw;
     height: 2px;
     background: rgb(224, 255, 255);
@@ -262,11 +262,14 @@ padding: 2px;
 .btn-container {
     display: flex;
     flex-direction: row;
+    width: 100%;
     gap: 3em;
     justify-content: center;
     align-items: center;
-    margin-top: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
     z-index: 99;
+    
 }
 
 .btn-wrapper {
@@ -406,7 +409,7 @@ padding: 2px;
 .selected-name-wrapper {
     width: 100%;
     height: 100%;
-    background: black;
+    background: rgb(0, 2, 19);
     border: 1px solid orange;
     display: flex;
     flex-direction: column-reverse;
@@ -498,7 +501,7 @@ padding: 2px;
 .status-wrapper {
     border: 1px solid orange;
     width: 80%; 
-    background: black;
+    background: rgba(0, 0, 0, 0.502);
 }
 
 .status-wrapper p {
@@ -530,7 +533,7 @@ padding: 2px;
 .see-more {
     position: relative;
     z-index: 99;
-    width: 14vw;
+    width: 16vw;
     height: 3vh;
     display: flex;
     flex-direction: row;
@@ -588,7 +591,7 @@ padding: 2px;
    display: flex;
     cursor: pointer;
     letter-spacing: 1px;
-    width: 10vw;
+    width: 100%;
     border: none;
     flex-direction: row;
     padding: 0;
@@ -605,6 +608,7 @@ padding: 2px;
     padding-left: 0.2em;
        font-size: 1em;
        width: 100%;    
+       margin: 0;
 }
 
 
@@ -617,7 +621,7 @@ padding: 2px;
         rgb(255, 77, 0) 50%
     );
     width: 35px;
-    height: 35px;
+    height: 100%;
     color: navy;
     font-size: 2.5em;
     display: flex;
@@ -819,13 +823,12 @@ padding: 2px;
     }
 
     .see-more {
-        width: 17vw;
-        height: 5vh;
+        width: 23vw;
         white-space: nowrap;
     }
 
     .see-more p {
-        padding-left: 2em;
+        
     }
 
     .show-more-list{
@@ -844,6 +847,138 @@ padding: 2px;
     }
 
     
+}
+
+@media screen and (max-width: 768px){
+    .search-page-container {
+        
+    }
+
+    .search-wrapper {
+        position: fixed;
+        margin-top: 16em;
+        top: 10px;
+        z-index: 99;
+    }
+
+    .search-btn {
+        right: 10%;
+    }
+
+    .suggestions-area {
+        width: 100vw;
+        background: red;
+    }
+
+      .search-btn {
+     transform: translateY(-50%) translateX(-30%);
+     
+  }
+
+  .search-result-wrapper {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    
+
+  }
+
+.suggestions-area {
+    position: sticky;
+    top: 15rem;
+    height: 30vh;
+    margin-top: 1em;
+    background: rgb(1, 4, 26);
+    z-index: 2;
+    clip-path: none;
+    filter: none;
+
+
+}
+
+.btn-container {
+    overflow-x: auto;
+    padding: 2em;
+}
+
+
+.info-cards-container {
+    height: 100vh;
+
+}
+
+.see-more {
+    width: 40vw;
+}
+
+.show-more-btn {
+    width: 100%;
+}
+
+.suggestions-area::before{
+    background: none;
+}
+
+.info-card {
+    max-width: 500px;
+}
+
+.suggestions-area::after{
+    background: none;
+}
+
+.search-result-wrapper-deco{
+    position: sticky;
+    margin-top: 1em;
+    top: 5.5rem;
+}
+ 
+.suggestions-area::before{
+    bottom: 2em;
+}
+
+.selected-info-card {
+    z-index: 99;
+    margin-top: 9em;
+}
+
+.show-more-list {
+    width: 90vw;
+    height: 100dvh;
+    z-index: 999;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.show-more-list > * {
+    z-index: 99;
+}
+
+.show-more-list ul {
+    overflow-y: auto;
+}
+
+.show-more-list ul li {
+    overflow: visible;
+    width: 30vw;
+}
+
+.show-more-list-only {
+    overflow-y: auto;
+}
+
+.close-menu-btn {
+    width: 34vw;
+    position: fixed;
+    top: 0;
+    right: 3em;
+    
+}
+
 }
 
 @media screen and (max-width: 480px){
@@ -866,6 +1001,7 @@ padding: 2px;
   }
 
   .search-wrapper {
+    margin-top: 12.5em;
     padding: 4px;
     width: 100%;
     z-index: 99;
@@ -975,6 +1111,10 @@ padding: 2px;
     top: 0;
     right: 3em;
     
+}
+
+.selected-name-wrapper {
+    width: 100vw;
 }
 
 

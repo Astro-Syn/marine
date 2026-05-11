@@ -223,11 +223,30 @@ z-index: 2;
 }
 }
 
+ @media screen and (max-width: 768px){
+    body {
+        overflow-y: hidden;
+    }
+
+   .app-container {
+    position: fixed;
+    left: 0;
+    margin-top: 10em;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+  }
+ }
+
 
 @media screen and (max-width: 480px){
 
     body {
-        overflow-y: none;
+        overflow-y: hidden;
     }
 
   .app-container {

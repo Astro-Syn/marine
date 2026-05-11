@@ -15,7 +15,7 @@ function App() {
     <div className='app-wrapper'>
       <div className="app-container">
       <div className='app-wrapper-fx'>
-        <div>■■■Astro-Syn</div>
+    
 
        
       </div>
