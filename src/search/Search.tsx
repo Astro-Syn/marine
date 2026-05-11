@@ -5,6 +5,7 @@ import { MdImageNotSupported } from "react-icons/md";
 import { MdArrowOutward } from "react-icons/md";
 import { LuArrowUpLeft } from "react-icons/lu";
 import { IoCloseSharp } from "react-icons/io5";
+import { TbWorld } from "react-icons/tb";
 
 interface WormsRecord {
   AphiaID: number;
@@ -97,10 +98,10 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
   const getHabitats = (s: SpeciesWithImage) => {
   const habitats = [];
 
-  if (s.isMarine) habitats.push("🌊 Ocean");
-  if (s.isBrackish) habitats.push("🌗 Brackish");
-  if (s.isFreshwater) habitats.push("💧 Freshwater");
-  if (s.isTerrestrial) habitats.push("🌍 Land");
+  if (s.isMarine) habitats.push("Ocean");
+  if (s.isBrackish) habitats.push(" Brackish");
+  if (s.isFreshwater) habitats.push(" Freshwater");
+  if (s.isTerrestrial) habitats.push(" Land");
 
   return habitats.length ? habitats.join(", ") : "Unknown habitat";
 };
@@ -322,7 +323,7 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
     {selected.rank}
   </p>
   <p>
-  <strong>🌍 Habitat</strong><br />
+  <strong><TbWorld /> Habitat</strong><br />
   {getHabitats(selected)}
 </p>
 
