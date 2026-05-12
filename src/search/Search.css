@@ -63,7 +63,7 @@
 .search-bar:focus {
     background: rgba(0, 10, 15, 0.954);
    border: none;
-  outline: 1px solid white;
+  outline: 1px solid orange;
 }
 
 .search-btn {
@@ -1061,11 +1061,7 @@ padding: 2px;
     background: none;
 }
 
-.search-result-wrapper-deco{
-    position: sticky;
-    margin-top: 1em;
-    top: 5.5rem;
-}
+
  
 .suggestions-area::before{
     bottom: 2em;
@@ -1117,5 +1113,90 @@ padding: 2px;
     width: 100vw;
 }
 
+
+}
+
+@media screen and (max-width: 360px){
+  .search-wrapper {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    clip-path: none;
+    z-index: 0;
+   
+  }
+
+  .search-bar {
+    width: 90%;
+    clip-path: none;
+    border: 3px solid orangered;
+    border-radius: 1em;
+    
+  }
+
+  .search-btn {
+    right: -1em;
+  }
+
+  .suggestions-area{
+    height: 40vh;
+    margin-bottom: 15em;
+    position: relative;
+  }
+
+  .suggestions-area p {
+    font-size: 1em;
+  }
+
+  .btn-container{
+    width: 100vw;
+    height: 7vh;
+    margin-bottom: 5em;
+    gap: 2em;
+  }
+
+  .btn-wrapper {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-wrapper button {
+    font-size: 0.8em;
+  }
+
+  .see-more {
+    position: absolute;
+    bottom: 3em;
+    height: 35px;
+
+    
+  }
+
+.show-more-list {
+    
+    z-index: 99;
+}
+
+.show-more-list > * {
+    position: relative;
+    z-index: 999; 
+}
+
+.close-menu-btn {
+    position: absolute;
+    right: 2em;
+    top: 1em;
+    padding: 0;
+    
+}
+
+.close-menu-btn p {
+    margin: 0;
+    padding: 0;
+}
 
 }
