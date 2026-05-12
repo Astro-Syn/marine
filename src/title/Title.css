@@ -42,3 +42,11 @@ h1 {
         right: auto; 
     }
 }
+
+@media screen and (max-width: 360px){
+    h1 {
+        left: auto;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}

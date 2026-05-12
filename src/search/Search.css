@@ -979,6 +979,8 @@ padding: 2px;
     
 }
 
+
+
 }
 
 @media screen and (max-width: 480px){
@@ -1117,6 +1119,13 @@ padding: 2px;
 }
 
 @media screen and (max-width: 360px){
+
+    .search-area{
+        position: relative;
+        height: 0vh;
+    }
+
+
   .search-wrapper {
     width: 90vw;
     display: flex;
@@ -1125,6 +1134,7 @@ padding: 2px;
     align-items: center;
     clip-path: none;
     z-index: 0;
+    
    
   }
 
@@ -1142,7 +1152,7 @@ padding: 2px;
 
   .suggestions-area{
     height: 40vh;
-    margin-bottom: 15em;
+    margin-bottom: 1em;
     position: relative;
   }
 
