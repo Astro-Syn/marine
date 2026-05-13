@@ -375,7 +375,11 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
 
 
 
- <div 
+ 
+      
+    </div>
+
+      <div 
  ref={panelRef}
  className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}>
     
@@ -690,8 +694,10 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
 
   </div>
 
-      
+
+    
     </div>
-    </div>
+
+    
   );
 }
