@@ -532,8 +532,10 @@ padding: 2px;
 .see-more {
     position: relative;
     z-index: 99;
+    padding: 0;
     width: 16vw;
-    height: 3vh;
+    min-width: 12vw;
+    height: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -543,8 +545,6 @@ padding: 2px;
     background: rgba(3, 1, 28, 0.744);
     backdrop-filter: blur(3px);
 }
-
-
 
 
 .see-more::before {
@@ -586,14 +586,19 @@ padding: 2px;
 
 
 .show-more-btn {
+    position: absolute;
     background: none;
    display: flex;
+   align-items: stretch;
     cursor: pointer;
     letter-spacing: 1px;
     width: 100%;
+    height: 100%;
     border: none;
     flex-direction: row;
     padding: 0;
+    gap: 0;
+    margin: 0;
     color: aqua;
     font-family: "Orbitron";
    
@@ -608,6 +613,7 @@ padding: 2px;
        font-size: 1em;
        width: 100%;    
        margin: 0;
+       padding: 0;
 }
 
 
@@ -620,7 +626,7 @@ padding: 2px;
         rgb(255, 77, 0) 50%
     );
     width: 35px;
-    height: 100%;
+    height: 35px;
     color: navy;
     font-size: 2.5em;
     display: flex;
@@ -822,10 +828,29 @@ padding: 2px;
         height: 30vh;
     }
 
-    .see-more {
-        width: 23vw;
+
+      .see-more {
+        min-width: 30vw;
         white-space: nowrap;
     }
+    
+.show-more-btn span {
+     background: linear-gradient(
+        to bottom,
+        orange 10%,
+        rgb(255, 77, 0) 50%
+    );
+    width: 35px;
+    height: 35px;
+    color: navy;
+    font-size: 2.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+
+  
 
     .show-more-list {
         width: 30vw;
