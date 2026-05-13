@@ -226,6 +226,7 @@ z-index: 2;
  @media screen and (max-width: 768px){
     body {
         overflow-y: hidden;
+        overflow: hidden;
     }
 
    .app-container {
@@ -239,6 +240,10 @@ z-index: 2;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+  }
+
+  .fx2-parent-wrapper{
+    display: none;
   }
  }
 
