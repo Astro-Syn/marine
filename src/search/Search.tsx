@@ -239,18 +239,21 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
     
 
       <div className='search-result-wrapper'>
-           
+           <div className='results-text'>
      
       {loading && <p>Loading...</p>}
 
       
       {!loading && results.length === 0 && (
-        <p className='results-text'>
-          No results found. Try scientific names like "Delphinus".
-        </p>
+        
+          <p>
+            No results found. Try scientific names like "Delphinus".
+          </p>
+          
+        
       )}
       
-
+</div>
         
       <div
         className='info-cards-container'
@@ -372,8 +375,6 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
       )}
        </div>
  
-
-
 
  
       

@@ -18,16 +18,17 @@ body {
    align-items: center;
    flex-wrap: wrap;
    overflow-y: auto;   
+   overflow-x: hidden;
+   
 }
 
 .app-container {
     position: relative;
     width: 60vw;
-    height: 100vh;
+    height: 93vh;
     border: 2px solid orange;
-    border-radius: 0.4em;
+    border-radius: 0.1em;
     background: rgba(1, 0, 11, 0.87);
-    
 }
 
 .app-wrapper {
@@ -38,10 +39,7 @@ body {
     height: 100vh;
     width: 100vw;
     z-index: 3;
-    
 }
-
-
 
 .app-wrapper-fx {
     position: absolute;
@@ -212,35 +210,28 @@ z-index: 2;
     animation-duration: 10s;
 }
 
-@media screen and (min-width: 993px) and (max-width: 1940px){
-.app-container {
-    min-height: 100vh;
-    height: auto;
+@media screen and (min-width: 1280px){
+
 }
 
-.app-wrapper {
-    min-height: 100vh;
-    height: auto;
-}
-}
 
- @media screen and (max-width: 768px){
+
+ @media screen and (max-width: 980px){
     body {
-        overflow-y: hidden;
         overflow: hidden;
+        margin: 0;
+        padding: 0;
     }
 
    .app-container {
     position: fixed;
     left: 0;
-    margin-top: 10em;
-    width: 100vw;
+    width: 101vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    overflow-y: auto;
+    overflow: hidden;
   }
 
   .fx2-parent-wrapper{
@@ -257,15 +248,15 @@ z-index: 2;
 
   .app-container {
     position: fixed;
-    left: 0;
-    margin-top: 10em;
-    width: 100vw;
+    left: 3px;
+    margin-top: 6em;
+    width: 103vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+   
   }
 
 
@@ -274,4 +265,11 @@ z-index: 2;
     background: teal;
 }
  
+}
+
+@media screen and (max-width: 380px) {
+    .app-container{
+        left: 0;
+        width: 100vw;
+    }
 }
