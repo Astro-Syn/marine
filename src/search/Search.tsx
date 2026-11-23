@@ -25,6 +25,37 @@ interface SpeciesWithImage extends WormsRecord {
   image?: string | null;
 }
 
+const QUICK_SUGGESTIONS: [string, string][] = [
+  ["Dolphin", "Delphinus"],
+  ["Coral", "Coralanthura"],
+  ["Humpback Whale", "Megaptera novaeangliae"],
+  ["Atlantic Cod", "Gadus morhua"],
+];
+
+const MORE_SPECIES: [string, string][] = [
+  ["Acorn Barnacle", "Semibalanus balanoides"],
+  ["American Lobster", "Homarus americanus"],
+  ["Blue Whale", "Balaenoptera musculus"],
+  ["California Sea Lion", "Zalophus californianus"],
+  ["Clown Anemonefish", "Amphiprion ocellaris"],
+  ["Common Octopus", "Octopus vulgaris"],
+  ["Crown-of-thorns Starfish", "Acanthaster planci"],
+  ["Giant Kelp", "Macrocystis pyrifera"],
+  ["Giant Squid", "Architeuthis dux"],
+  ["Great White Shark", "Carcharodon carcharias"],
+  ["Harbor Seal", "Phoca vitulina"],
+  ["Humpback Whale", "Megaptera novaeangliae"],
+  ["Knotted Wrack", "Ascophyllum nodosum"],
+  ["Moon Jellyfish", "Aurelia aurita"],
+  ["Ocean Sunfish", "Mola mola"],
+  ["Pacific Manta Ray", "Manta birostris"],
+  ["Polar Bear", "Ursus maritimus"],
+  ["Scalloped Hammerhead", "Sphyrna lewini"],
+  ["Sea Otter", "Enhydra lutris"],
+  ["Seagrass", "Zostera marina"],
+  ["Yellowfin Tuna", "Thunnus albacares"],
+];
+
 export default function Search() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SpeciesWithImage[]>([]);
@@ -45,7 +76,7 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
   
 
  useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = (event: PointerEvent) => {
     if (
       showSpeciesPanel &&
       panelRef.current &&
@@ -55,10 +86,10 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
     }
   };
 
-  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("pointerdown", handleClickOutside);
 
   return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
+    document.removeEventListener("pointerdown", handleClickOutside);
   };
 }, [showSpeciesPanel]);
   
@@ -80,7 +111,7 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
   const fetchImage = async (name: string) => {
     try {
       const match = await safeFetchJSON(
-        `https://api.gbif.org/v1/species/match?name=${name}`
+        `https://api.gbif.org/v1/species/match?name=${encodeURIComponent(name)}`
       );
 
       if (!match?.usageKey) return null;
@@ -117,17 +148,17 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
     try {
       
       let data = await safeFetchJSON(
-        `https://www.marinespecies.org/rest/AphiaRecordsByName/${q}?like=true&marine_only=true`
+        `https://www.marinespecies.org/rest/AphiaRecordsByName/${encodeURIComponent(q)}?like=true&marine_only=true`
       );
 
       
       if (!data || data.length === 0) {
         const vernacular = await safeFetchJSON(
-          `https://www.marinespecies.org/rest/AphiaRecordsByVernacular/${query}`
+          `https://www.marinespecies.org/rest/AphiaRecordsByVernacular/${encodeURIComponent(q)}`
         );
 
         if (vernacular && vernacular.length > 0) {
-          data = vernacular.map((v: any) => ({
+          data = vernacular.map((v: { AphiaID: number; scientificname: string }) => ({
             AphiaID: v.AphiaID,
             scientificname: v.scientificname,
             authority: "",
@@ -169,536 +200,198 @@ const fetchSpeciesDetails = async (aphiaID: number) => {
     setLoading(false);
   };
 
+  const pickFromPanel = (name: string) => {
+    setQuery(name);
+    setShowSpeciesPanel(false);
+    setHighlightInput(true);
+    setTimeout(() => setHighlightInput(false), 600);
+    searchSpecies(name);
+  };
+
   function suggestedBtnNavs(name: string){
     setQuery(name)
   }
 
   return (
     <div className='search-page-container'>
-       
       <div className='scanner-wrapper'>
-
-      <div className="search-area">
-        <div className={`search-wrapper ${highlightInput ? "highlight" : ""}`}>
-
-        
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && searchSpecies()}
-          placeholder="Search Marine Species..."
-          className="search-bar"
-        />
-        <button 
-        className='search-btn'
-        onClick={() => searchSpecies()}>
-            
-            <LuSearch size={20}/>
+        <div className="search-area">
+          <div className={`search-wrapper ${highlightInput ? "highlight" : ""}`}>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && searchSpecies()}
+              placeholder="Search Marine Species..."
+              className="search-bar"
+              aria-label="Search marine species"
+            />
+            <button
+              className='search-btn'
+              aria-label="Search"
+              onClick={() => searchSpecies()}
+            >
+              <LuSearch size={20} />
             </button>
-      </div>
-      
-      </div>
-
-      <div className='suggestions-area'>
-        <p>Suggestions</p>
-        <div className='btn-container'>
-          <div className='btn-wrapper'>
-              <button onClick={() => suggestedBtnNavs("Delphinus")}>Dolphin</button>
           </div>
-
-          <div className='btn-wrapper'>
-              <button
-              onClick={() => suggestedBtnNavs("Coralanthura")}
-              >Coral</button>
-          </div>
-
-          <div className='btn-wrapper'>
-              <button
-              onClick={() => {
-                suggestedBtnNavs("Megaptera novaeangliae")
-              }}
-              >Humpback Whale</button>
-          </div>
-
-          <div className='btn-wrapper'>
-              <button
-              onClick={() => suggestedBtnNavs("Gadus morhua")}
-              >Atlantic Cod</button>
-          </div>
-              
-           
         </div>
-        <div className='see-more'>
 
-                      <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
-         <span><LuArrowUpLeft /></span> <p>See more suggestions </p>
-          </button>
+        <div className='suggestions-area'>
+          <p>Suggestions</p>
+          <div className='btn-container'>
+            {QUICK_SUGGESTIONS.map(([label, scientific]) => (
+              <div className='btn-wrapper' key={scientific}>
+                <button onClick={() => suggestedBtnNavs(scientific)}>{label}</button>
               </div>
-       <div className='search-result-wrapper-deco'></div>
-      </div>
-    
-
-      <div className='search-result-wrapper'>
-           <div className='results-text'>
-     
-      {loading && <p>Loading...</p>}
-
-      
-      {!loading && results.length === 0 && (
-        
-          <p>
-            No results found. Try scientific names like "Delphinus".
-          </p>
-          
-        
-      )}
-      
-</div>
-        
-      <div
-        className='info-cards-container'
-      >
-        {results.map((item) => (
-          <div
-            className='info-card'
-            key={item.AphiaID}
-            onClick={() => setSelected(item)}
-            
-          >
-            {item.image ? (
-              <img
-                src={item.image}
-                alt={item.scientificname}
-                style={{
-                  width: "100%",
-                  height: "150px",
-                  objectFit: "cover",
-                  marginBottom: "0.5rem",
-                }}
-              />
-            ) : (
-              <div
-              className='info-card-img-area'
-              
-              >
-                <MdImageNotSupported size={40}/>
-              </div>
-            )}
-
-            <h3>{item.scientificname}</h3>
-            <p>{item.rank}</p>
+            ))}
           </div>
-        ))}
+
+          <div className='see-more'>
+            <button className='show-more-btn' onClick={() => setShowSpeciesPanel(true)}>
+              <span><LuArrowUpLeft /></span>
+              <p>See more suggestions</p>
+            </button>
+          </div>
+        </div>
+        <div className='search-result-wrapper-deco' aria-hidden="true"></div>
+
+        <div className='search-result-wrapper'>
+          <div className='results-text'>
+            {loading && <p>Loading...</p>}
+            {!loading && results.length === 0 && (
+              <p>No results found. Try scientific names like "Delphinus".</p>
+            )}
+          </div>
+
+          {!loading && results.length > 0 && (
+            <div className='info-cards-container'>
+              {results.map((item) => (
+                <div
+                  className='info-card'
+                  key={item.AphiaID}
+                  onClick={() => setSelected(item)}
+                >
+                  {item.image ? (
+                    <img
+                      className='info-card-img'
+                      src={item.image}
+                      alt={item.scientificname}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className='info-card-img-area'>
+                      <MdImageNotSupported size={40} />
+                    </div>
+                  )}
+
+                  <h3>{item.scientificname}</h3>
+                  <p>{item.rank}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      
       {selected && (
-        <div
-          onClick={() => setSelected(null)}
-          className='if-selected'
-        
-        >
+        <div onClick={() => setSelected(null)} className='if-selected'>
           <div
             onClick={(e) => e.stopPropagation()}
             className='selected-info-card'
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.scientificname}
           >
-            
-            
-          <div className='selected-name-wrapper'>
+            <button
+              className='selected-close-btn'
+              aria-label="Close"
+              onClick={() => setSelected(null)}
+            >
+              <IoCloseSharp />
+            </button>
 
-          
-            <h2 
-  className="selected-name"
-  data-text={selected.scientificname}
->
-  {selected.scientificname}
-</h2>
+            <div className='selected-name-wrapper'>
+              <h2 className="selected-name" data-text={selected.scientificname}>
+                {selected.scientificname}
+              </h2>
 
-           <div className='status-wrapper'>
+              <div className='status-wrapper'>
+                <p>
+                  <strong>What is it?</strong>
+                  <span>A marine species found in global ocean ecosystems.</span>
+                </p>
+                <p>
+                  <strong>Scientific Rank</strong>
+                  <span>{selected.rank}</span>
+                </p>
+                <p>
+                  <strong><TbWorld /> Habitat</strong>
+                  <span>{getHabitats(selected)}</span>
+                </p>
+                <p>
+                  <strong>Status</strong>
+                  <span>{selected.isExtinct ? "Extinct species" : "Currently existing"}</span>
+                </p>
+                <p>
+                  <strong>Conservation Status</strong>
+                  <span>
+                    {selected.status === "accepted"
+                      ? "Recognized species"
+                      : selected.status || "Unknown"}
+                  </span>
+                </p>
+                <p>
+                  <strong>Scientific Name</strong>
+                  <span>{selected.scientificname}</span>
+                </p>
+              </div>
 
-  <p>
-    <strong> What is it?</strong><br />
-    A marine species found in global ocean ecosystems.
-  </p>
-
-  <p>
-    <strong> Scientific Rank</strong><br />
-    {selected.rank}
-  </p>
-  <p>
-  <strong><TbWorld /> Habitat</strong><br />
-  {getHabitats(selected)}
-</p>
-
-<p>
-  <strong> Status</strong><br />
-  {selected.isExtinct ? "Extinct species" : "Currently existing"}
-</p>
-
-  <p>
-    <strong> Conservation Status</strong><br />
-    {selected.status === "accepted"
-      ? "Recognized species"
-      : selected.status || "Unknown"}
-  </p>
-
-  <p>
-    <strong> Scientific Name</strong><br />
-    {selected.scientificname}
-  </p>
-
-</div>
-             <div className='selected-name-img-area'>
-  {selected.image ? (
-    <img
-      src={selected.image}
-      alt={selected.scientificname}
-      onError={(e) => {
-        (e.target as HTMLImageElement).style.display = "none";
-      }}
-      style={{
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-      }}
-    />
-  ) : (
-    <div className="fallback-icon">
-      <MdImageNotSupported size={50} />
-    </div>
-  )}
-</div>
-
+              <div className='selected-name-img-area'>
+                {selected.image ? (
+                  <img
+                    src={selected.image}
+                    alt={selected.scientificname}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                ) : (
+                  <div className="fallback-icon">
+                    <MdImageNotSupported size={50} />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-        </div>
       )}
-       </div>
- 
 
- 
-      
+      <div
+        ref={panelRef}
+        className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}
+        aria-hidden={!showSpeciesPanel}
+      >
+        <div className='panel-header'>
+          <h2 className='panel-title'>More species</h2>
+          <button
+            className="close-menu-btn"
+            onClick={() => setShowSpeciesPanel(false)}
+          >
+            <span><IoCloseSharp /></span>
+            close
+          </button>
+        </div>
+
+        <div className='show-more-list-only'>
+          <ul>
+            {MORE_SPECIES.map(([label, scientific]) => (
+              <li key={scientific} onClick={() => pickFromPanel(scientific)}>
+                <span className='species-label'>{label}</span>
+                <MdArrowOutward className='arrow-icon' />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
-
-      <div 
- ref={panelRef}
- className={`show-more-list ${showSpeciesPanel ? "open" : ""}`}>
-    
-  <div className='show-more-list-only'>
-    <ul>
-
-          <li
-  onClick={() => {
-    setQuery("Semibalanus balanoides");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Acorn Barnacle <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Homarus americanus");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  American Lobster <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Balaenoptera musculus");
-    setShowSpeciesPanel(false);
-    setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Blue Whale <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Zalophus californianus");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  California Sea Lion <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Amphiprion ocellaris");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Clown Anemonefish <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Octopus vulgaris");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Common Octopus <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Acanthaster planci");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Crown-of-thorns Starfish <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Macrocystis pyrifera");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Giant Kelp <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Architeuthis dux");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Giant Squid <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Carcharodon carcharias");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
- Great White Shark <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Phoca vitulina");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Harbor Seal <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Megaptera novaeangliae");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Humpback Whale <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Ascophyllum nodosum");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Knotted Wrack <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Aurelia aurita");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Moon Jellyfish <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Mola mola");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Ocean Sunfish <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Manta birostris");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Pacific Manta Ray <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Ursus maritimus");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Polar Bear <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Sphyrna lewini");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Scalloped Hammerhead <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Enhydra lutris");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Sea Otter <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Zostera marina");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Seagrass <MdArrowOutward className='arrow-icon'/>
-</li>
-
-<li
-  onClick={() => {
-    setQuery("Thunnus albacares");
-    setShowSpeciesPanel(false);
-      setHighlightInput(true);
-    setTimeout(() => {
-    setHighlightInput(false);
-  }, 600);
-    searchSpecies();
-  }}
->
-  Yellowfin Tuna <MdArrowOutward className='arrow-icon'/>
-</li>
-
-
-</ul>
-</div>
-<button 
-    className="close-menu-btn"
-    onClick={() => setShowSpeciesPanel(false)}>
-      <span>
-        <IoCloseSharp />
-      </span>
-      close
-      </button>
-
-  </div>
-
-
-    
-    </div>
-
-    
   );
 }
