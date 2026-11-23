@@ -2,50 +2,35 @@ import MarineSearch from "./search/Search"
 import About from "./about/About"
 import Navbar from "./navbar/Navbar"
 import Title from "./title/Title";
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
 
-
-
 function App() {
-  
-
   return (
-    <>
     <div className='app-wrapper'>
+      <div className='top-effect' />
+      <div className='grid-bg' />
+      <div className="bubbles" aria-hidden="true">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <span key={i} />
+        ))}
+      </div>
+
       <div className="app-container">
-      <div className='app-wrapper-fx'>
-    
+        <div className='app-wrapper-fx' aria-hidden="true" />
+        <div className="app-wrapper-fx2" aria-hidden="true" />
 
-       
-      </div>
-      <div className='fx2-parent-wrapper'>
-             <div className="app-wrapper-fx2">
-         
-        </div>
-        
-      </div>
-    
-      <div className='top-effect'></div>
-              <div className="bubbles">
-  {Array.from({ length: 15 }).map((_, i) => (
-    <span key={i} />
-  ))}
-</div>
-      <div className='grid-bg'/>
-        <div className='top-effect'/>
-    <Title/>
-    
-    <Navbar/>
+        <Title />
+        <Navbar />
 
-    <Routes>
-      <Route path='/' element={<MarineSearch/>}/>
-      <Route path='/about' element={<About/>}/>
-    </Routes>
-    
+        <main className='app-content'>
+          <Routes>
+            <Route path='/' element={<MarineSearch />} />
+            <Route path='/about' element={<About />} />
+          </Routes>
+        </main>
+      </div>
     </div>
-    </div>
-    </>
   )
 }
 
